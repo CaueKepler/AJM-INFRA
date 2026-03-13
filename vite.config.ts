@@ -4,7 +4,7 @@ import path from "path";
 import { componentTagger } from "lovable-tagger";
 
 export default defineConfig(({ mode }) => ({
-  base: "/ajm-AJM-INFRA/",
+  base: "/AJM-INFRA/",
   server: {
     host: "::",
     port: 8080,
