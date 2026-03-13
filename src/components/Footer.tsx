@@ -120,14 +120,28 @@ export function Footer() {
             Copyright © 2026 AJM Infraestrutura. Todos os direitos reservados.
           </p>
           <div className="flex gap-6">
-            {["Home", "Quem Somos", "Produtos", "Serviços", "Fundações", "Projetos", "Contato"].map((item) => (
-              <a
-                key={item}
-                href={`#${item.toLowerCase().replace(/ /g, "-").replace(/õ/g, "o").replace(/ç/g, "c")}`}
+            {[
+              { label: "Home", id: "home" },
+              { label: "Quem Somos", id: "quem-somos" },
+              { label: "Produtos", id: "produtos" },
+              { label: "Serviços", id: "servicos" },
+              { label: "Fundações", id: "fundacoes" },
+              { label: "Projetos", id: "projetos" },
+              { label: "Contato", id: "contato" },
+            ].map((item) => (
+              <button
+                key={item.label}
+                type="button"
+                onClick={() => {
+                  const target = document.getElementById(item.id);
+                  if (target) {
+                    target.scrollIntoView({ behavior: "smooth", block: "start" });
+                  }
+                }}
                 className="font-body text-white/30 hover:text-brand text-xs tracking-wide transition-colors"
               >
-                {item}
-              </a>
+                {item.label}
+              </button>
             ))}
           </div>
         </div>

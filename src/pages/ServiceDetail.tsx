@@ -1,4 +1,4 @@
-import { useParams, Link } from "react-router-dom";
+import { useParams, Link, useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { ArrowLeft, ArrowRight, CheckCircle, Camera, X } from "lucide-react";
 import { Header } from "@/components/Header";
@@ -248,7 +248,6 @@ function PhotoGallery({ gallery }: { gallery: { src: string; caption: string }[]
         </div>
       </section>
 
-      {/* Lightbox */}
       {lightbox !== null && (
         <div
           className="fixed inset-0 z-50 bg-navy/95 flex items-center justify-center p-4"
@@ -303,6 +302,17 @@ function PhotoGallery({ gallery }: { gallery: { src: string; caption: string }[]
 export default function ServiceDetail() {
   const { slug } = useParams<{ slug: string }>();
   const service = slug ? servicesData[slug] : null;
+  const navigate = useNavigate();
+
+  const goToSection = (sectionId: string) => {
+    navigate("/");
+    setTimeout(() => {
+      const target = document.getElementById(sectionId);
+      if (target) {
+        target.scrollIntoView({ behavior: "smooth", block: "start" });
+      }
+    }, 150);
+  };
 
   useEffect(() => {
     window.scrollTo({ top: 0, behavior: "smooth" });
@@ -313,7 +323,9 @@ export default function ServiceDetail() {
       <div className="min-h-screen bg-background flex items-center justify-center">
         <div className="text-center">
           <h1 className="font-display text-4xl font-black text-foreground mb-4">Serviço não encontrado</h1>
-          <a href="/" className="text-brand font-body font-semibold hover:underline">Voltar ao início</a>
+          <Link to="/" className="text-brand font-body font-semibold hover:underline">
+            Voltar ao início
+          </Link>
         </div>
       </div>
     );
@@ -327,31 +339,42 @@ export default function ServiceDetail() {
     <div className="min-h-screen bg-background overflow-x-hidden">
       <Header />
 
-      {/* Hero */}
       <section className="relative pt-32 pb-24 md:pb-32 overflow-hidden min-h-[380px] flex items-end bg-navy">
         <div className="absolute inset-0 tech-grid-dark opacity-40" />
         <div className="absolute inset-0 bg-gradient-to-t from-navy via-navy/90 to-navy/70" />
         <div className="relative container mx-auto px-4">
           <nav className="flex items-center gap-2 text-sm font-body mb-8">
-            <a href="/" className="text-white/50 hover:text-white transition-colors">Início</a>
+            <Link to="/" className="text-white/50 hover:text-white transition-colors">
+              Início
+            </Link>
             <span className="text-white/30">/</span>
-            <a href="/#servicos" className="text-white/50 hover:text-white transition-colors">Serviços</a>
+            <button
+              type="button"
+              onClick={() => goToSection("servicos")}
+              className="text-white/50 hover:text-white transition-colors"
+            >
+              Serviços
+            </button>
             <span className="text-white/30">/</span>
             <span className="text-brand font-semibold">{service.tag}</span>
           </nav>
+
           <div className="inline-flex items-center bg-brand px-3 py-1 mb-4">
-            <span className="font-body text-xs font-bold tracking-widest uppercase text-white">{service.tag}</span>
+            <span className="font-body text-xs font-bold tracking-widest uppercase text-white">
+              {service.tag}
+            </span>
           </div>
+
           <h1 className="font-display font-black text-3xl md:text-5xl lg:text-6xl text-white leading-none tracking-tight max-w-3xl">
             {service.title.toUpperCase()}
           </h1>
+
           <p className="font-body text-white/60 text-base md:text-lg mt-4 max-w-2xl leading-relaxed">
             {service.description}
           </p>
         </div>
       </section>
 
-      {/* Content */}
       <section className="py-20 relative">
         <div className="absolute inset-0 tech-grid opacity-30" />
         <div className="container mx-auto px-4 relative">
@@ -361,7 +384,11 @@ export default function ServiceDetail() {
                 SOBRE O <span className="text-brand">SERVIÇO</span>
               </h2>
             </div>
-            <p className="font-body text-muted-foreground leading-relaxed mb-8">{service.fullDescription}</p>
+
+            <p className="font-body text-muted-foreground leading-relaxed mb-8">
+              {service.fullDescription}
+            </p>
+
             <ul className="space-y-3 mb-12">
               {service.highlights.map((item, i) => (
                 <li key={i} className="flex items-center gap-3 font-body text-foreground text-sm">
@@ -371,12 +398,15 @@ export default function ServiceDetail() {
               ))}
             </ul>
 
-            {/* CTA */}
             <div className="bg-navy p-8 relative overflow-hidden">
               <div className="absolute inset-0 tech-grid-dark opacity-40" />
               <div className="relative text-center">
-                <h3 className="font-display font-bold text-2xl text-white mb-3">Precisa deste serviço?</h3>
-                <p className="font-body text-white/60 text-sm mb-6">Entre em contato para um orçamento personalizado.</p>
+                <h3 className="font-display font-bold text-2xl text-white mb-3">
+                  Precisa deste serviço?
+                </h3>
+                <p className="font-body text-white/60 text-sm mb-6">
+                  Entre em contato para um orçamento personalizado.
+                </p>
                 <a
                   href="mailto:contato@ajminfra.com.br"
                   className="inline-flex items-center gap-2 bg-brand text-white font-display font-bold uppercase tracking-widest px-8 py-4 hover:bg-brand-dark transition-all duration-300"
@@ -389,19 +419,20 @@ export default function ServiceDetail() {
         </div>
       </section>
 
-      {/* Photo Gallery */}
       <PhotoGallery gallery={service.gallery} />
 
-      {/* Other services */}
       <section className="py-16 bg-navy relative overflow-hidden">
         <div className="absolute inset-0 tech-grid-dark opacity-40" />
         <div className="container mx-auto px-4 relative">
           <div className="text-center mb-10">
-            <span className="font-body text-brand text-sm font-semibold tracking-widest uppercase block mb-3">Explore mais</span>
+            <span className="font-body text-brand text-sm font-semibold tracking-widest uppercase block mb-3">
+              Explore mais
+            </span>
             <h3 className="font-display font-black text-3xl text-white uppercase">
               Outros <span className="text-brand">Serviços</span>
             </h3>
           </div>
+
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 max-w-5xl mx-auto">
             {otherServices.map(([key, s]) => (
               <Link
@@ -410,7 +441,9 @@ export default function ServiceDetail() {
                 className="group relative overflow-hidden bg-white/5 border border-white/10 hover:border-brand/40 transition-all duration-300 p-5"
               >
                 <div className="inline-flex items-center bg-brand/20 px-2 py-0.5 mb-3">
-                  <span className="font-body text-[10px] font-bold tracking-widest uppercase text-brand">{s.tag}</span>
+                  <span className="font-body text-[10px] font-bold tracking-widest uppercase text-brand">
+                    {s.tag}
+                  </span>
                 </div>
                 <h4 className="font-display font-bold text-white text-base leading-tight group-hover:text-brand transition-colors mb-2">
                   {s.title}
@@ -423,10 +456,15 @@ export default function ServiceDetail() {
               </Link>
             ))}
           </div>
+
           <div className="text-center mt-10">
-            <a href="/#servicos" className="inline-flex items-center gap-2 text-white/50 hover:text-brand transition-colors font-body text-sm">
+            <button
+              type="button"
+              onClick={() => goToSection("servicos")}
+              className="inline-flex items-center gap-2 text-white/50 hover:text-brand transition-colors font-body text-sm"
+            >
               <ArrowLeft size={14} /> Voltar para todos os serviços
-            </a>
+            </button>
           </div>
         </div>
       </section>

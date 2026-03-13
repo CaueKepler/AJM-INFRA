@@ -1,4 +1,4 @@
-import { useParams, Link } from "react-router-dom";
+import { useParams, Link, useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { ArrowLeft, ArrowRight, CheckCircle, Camera, X, Shield, Anchor, Link2, Package, Wrench } from "lucide-react";
 import { Header } from "@/components/Header";
@@ -153,7 +153,11 @@ function PhotoGallery({ gallery, label }: { gallery: { src: string; caption: str
                 onClick={() => setLightbox(i)}
                 className="group relative aspect-[4/3] bg-muted border border-border overflow-hidden hover:border-brand/40 transition-all duration-300 cursor-pointer"
               >
-                <img src={photo.src} alt={photo.caption} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
+                <img
+                  src={photo.src}
+                  alt={photo.caption}
+                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                />
                 <div className="absolute inset-0 bg-navy/0 group-hover:bg-navy/60 transition-all duration-300 flex items-center justify-center">
                   <div className="opacity-0 group-hover:opacity-100 transition-opacity duration-300 text-center p-4">
                     <Camera size={28} className="text-brand mx-auto mb-2" />
@@ -201,6 +205,17 @@ function PhotoGallery({ gallery, label }: { gallery: { src: string; caption: str
 export default function ProductDetail() {
   const { slug } = useParams<{ slug: string }>();
   const product = slug ? productsData[slug] : null;
+  const navigate = useNavigate();
+
+  const goToSection = (sectionId: string) => {
+    navigate("/");
+    setTimeout(() => {
+      const target = document.getElementById(sectionId);
+      if (target) {
+        target.scrollIntoView({ behavior: "smooth", block: "start" });
+      }
+    }, 150);
+  };
 
   useEffect(() => {
     window.scrollTo({ top: 0, behavior: "smooth" });
@@ -211,7 +226,9 @@ export default function ProductDetail() {
       <div className="min-h-screen bg-background flex items-center justify-center">
         <div className="text-center">
           <h1 className="font-display text-4xl font-black text-foreground mb-4">Produto não encontrado</h1>
-          <a href="/" className="text-brand font-body font-semibold hover:underline">Voltar ao início</a>
+          <Link to="/" className="text-brand font-body font-semibold hover:underline">
+            Voltar ao início
+          </Link>
         </div>
       </div>
     );
@@ -226,15 +243,22 @@ export default function ProductDetail() {
     <div className="min-h-screen bg-background overflow-x-hidden">
       <Header />
 
-      {/* Hero */}
       <section className="relative pt-32 pb-24 md:pb-32 overflow-hidden min-h-[380px] flex items-end bg-navy">
         <div className="absolute inset-0 tech-grid-dark opacity-40" />
         <div className="absolute inset-0 bg-gradient-to-t from-navy via-navy/90 to-navy/70" />
         <div className="relative container mx-auto px-4">
           <nav className="flex items-center gap-2 text-sm font-body mb-8">
-            <a href="/" className="text-white/50 hover:text-white transition-colors">Início</a>
+            <Link to="/" className="text-white/50 hover:text-white transition-colors">
+              Início
+            </Link>
             <span className="text-white/30">/</span>
-            <a href="/#produtos" className="text-white/50 hover:text-white transition-colors">Produtos</a>
+            <button
+              type="button"
+              onClick={() => goToSection("produtos")}
+              className="text-white/50 hover:text-white transition-colors"
+            >
+              Produtos
+            </button>
             <span className="text-white/30">/</span>
             <span className="text-brand font-semibold">{product.tag}</span>
           </nav>
@@ -257,7 +281,6 @@ export default function ProductDetail() {
         </div>
       </section>
 
-      {/* Content */}
       <section className="py-20 relative">
         <div className="absolute inset-0 tech-grid opacity-30" />
         <div className="container mx-auto px-4 relative">
@@ -267,9 +290,9 @@ export default function ProductDetail() {
                 SOBRE O <span className="text-brand">PRODUTO</span>
               </h2>
             </div>
+
             <p className="font-body text-muted-foreground leading-relaxed mb-6">{product.fullDescription}</p>
 
-            {/* Types */}
             {product.types && product.types.length > 0 && (
               <div className="mb-8">
                 <h3 className="font-display font-bold text-lg text-foreground mb-3 uppercase">Tipos disponíveis</h3>
@@ -283,7 +306,6 @@ export default function ProductDetail() {
               </div>
             )}
 
-            {/* Application */}
             {product.application && (
               <div className="bg-muted border border-border p-5 mb-6">
                 <p className="font-body text-sm">
@@ -293,7 +315,6 @@ export default function ProductDetail() {
               </div>
             )}
 
-            {/* Extra */}
             {product.extra && (
               <div className="bg-brand/5 border border-brand/20 p-5 mb-8">
                 <p className="font-body text-sm text-foreground font-medium">{product.extra}</p>
@@ -309,7 +330,6 @@ export default function ProductDetail() {
               ))}
             </ul>
 
-            {/* CTA */}
             <div className="bg-navy p-8 relative overflow-hidden">
               <div className="absolute inset-0 tech-grid-dark opacity-40" />
               <div className="relative text-center">
@@ -327,10 +347,8 @@ export default function ProductDetail() {
         </div>
       </section>
 
-      {/* Photo Gallery */}
       <PhotoGallery gallery={product.gallery} label="Produto" />
 
-      {/* Other Products */}
       <section className="py-16 bg-navy relative overflow-hidden">
         <div className="absolute inset-0 tech-grid-dark opacity-40" />
         <div className="container mx-auto px-4 relative">
@@ -362,9 +380,13 @@ export default function ProductDetail() {
             ))}
           </div>
           <div className="text-center mt-10">
-            <a href="/#produtos" className="inline-flex items-center gap-2 text-white/50 hover:text-brand transition-colors font-body text-sm">
+            <button
+              type="button"
+              onClick={() => goToSection("produtos")}
+              className="inline-flex items-center gap-2 text-white/50 hover:text-brand transition-colors font-body text-sm"
+            >
               <ArrowLeft size={14} /> Voltar para todos os produtos
-            </a>
+            </button>
           </div>
         </div>
       </section>

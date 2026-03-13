@@ -1,4 +1,4 @@
-import { useParams, Link } from "react-router-dom";
+import { useParams, Link, useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { ArrowLeft, ArrowRight, CheckCircle, Camera, X, LifeBuoy, Waves, Construction, Ship, Anchor, Link2, HardHat } from "lucide-react";
 import { Header } from "@/components/Header";
@@ -178,7 +178,11 @@ function PhotoGallery({ gallery }: { gallery: { src: string; caption: string }[]
                 onClick={() => setLightbox(i)}
                 className="group relative aspect-[4/3] bg-muted border border-border overflow-hidden hover:border-brand/40 transition-all duration-300 cursor-pointer"
               >
-                <img src={photo.src} alt={photo.caption} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
+                <img
+                  src={photo.src}
+                  alt={photo.caption}
+                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                />
                 <div className="absolute inset-0 bg-navy/0 group-hover:bg-navy/60 transition-all duration-300 flex items-center justify-center">
                   <div className="opacity-0 group-hover:opacity-100 transition-opacity duration-300 text-center p-4">
                     <Camera size={28} className="text-brand mx-auto mb-2" />
@@ -199,21 +203,30 @@ function PhotoGallery({ gallery }: { gallery: { src: string; caption: string }[]
             <X size={32} />
           </button>
           <button
-            onClick={(e) => { e.stopPropagation(); setLightbox(lightbox > 0 ? lightbox - 1 : gallery.length - 1); }}
+            onClick={(e) => {
+              e.stopPropagation();
+              setLightbox(lightbox > 0 ? lightbox - 1 : gallery.length - 1);
+            }}
             className="absolute left-4 md:left-8 text-white/50 hover:text-brand transition-colors"
           >
             <ArrowLeft size={36} />
           </button>
           <div className="max-w-4xl max-h-[80vh] relative" onClick={(e) => e.stopPropagation()}>
-            <img src={gallery[lightbox].src} alt={gallery[lightbox].caption} className="max-w-full max-h-[75vh] object-contain border-2 border-white/10" />
+            <img
+              src={gallery[lightbox].src}
+              alt={gallery[lightbox].caption}
+              className="max-w-full max-h-[75vh] object-contain border-2 border-white/10"
+            />
             <p className="text-center font-body text-white/80 text-sm mt-4">
-              {gallery[lightbox].caption
-              }
+              {gallery[lightbox].caption}
               <span className="text-white/40 ml-3">{lightbox + 1} / {gallery.length}</span>
             </p>
           </div>
           <button
-            onClick={(e) => { e.stopPropagation(); setLightbox(lightbox < gallery.length - 1 ? lightbox + 1 : 0); }}
+            onClick={(e) => {
+              e.stopPropagation();
+              setLightbox(lightbox < gallery.length - 1 ? lightbox + 1 : 0);
+            }}
             className="absolute right-4 md:right-8 text-white/50 hover:text-brand transition-colors"
           >
             <ArrowRight size={36} />
@@ -227,6 +240,17 @@ function PhotoGallery({ gallery }: { gallery: { src: string; caption: string }[]
 export default function ProjetoDetail() {
   const { slug } = useParams<{ slug: string }>();
   const projeto = slug ? projetosData[slug] : null;
+  const navigate = useNavigate();
+
+  const goToSection = (sectionId: string) => {
+    navigate("/");
+    setTimeout(() => {
+      const target = document.getElementById(sectionId);
+      if (target) {
+        target.scrollIntoView({ behavior: "smooth", block: "start" });
+      }
+    }, 150);
+  };
 
   useEffect(() => {
     window.scrollTo({ top: 0, behavior: "smooth" });
@@ -237,7 +261,9 @@ export default function ProjetoDetail() {
       <div className="min-h-screen bg-background flex items-center justify-center">
         <div className="text-center">
           <h1 className="font-display text-4xl font-black text-foreground mb-4">Projeto não encontrado</h1>
-          <a href="/" className="text-brand font-body font-semibold hover:underline">Voltar ao início</a>
+          <Link to="/" className="text-brand font-body font-semibold hover:underline">
+            Voltar ao início
+          </Link>
         </div>
       </div>
     );
@@ -252,15 +278,22 @@ export default function ProjetoDetail() {
     <div className="min-h-screen bg-background overflow-x-hidden">
       <Header />
 
-      {/* Hero */}
       <section className="relative pt-32 pb-24 md:pb-32 overflow-hidden min-h-[380px] flex items-end bg-navy">
         <div className="absolute inset-0 tech-grid-dark opacity-40" />
         <div className="absolute inset-0 bg-gradient-to-t from-navy via-navy/90 to-navy/70" />
         <div className="relative container mx-auto px-4">
           <nav className="flex items-center gap-2 text-sm font-body mb-8">
-            <a href="/" className="text-white/50 hover:text-white transition-colors">Início</a>
+            <Link to="/" className="text-white/50 hover:text-white transition-colors">
+              Início
+            </Link>
             <span className="text-white/30">/</span>
-            <a href="/#projetos" className="text-white/50 hover:text-white transition-colors">Projetos</a>
+            <button
+              type="button"
+              onClick={() => goToSection("projetos")}
+              className="text-white/50 hover:text-white transition-colors"
+            >
+              Projetos
+            </button>
             <span className="text-white/30">/</span>
             <span className="text-brand font-semibold">{projeto.tag}</span>
           </nav>
@@ -283,7 +316,6 @@ export default function ProjetoDetail() {
         </div>
       </section>
 
-      {/* Content */}
       <section className="py-20 relative">
         <div className="absolute inset-0 tech-grid opacity-30" />
         <div className="container mx-auto px-4 relative">
@@ -304,7 +336,6 @@ export default function ProjetoDetail() {
               ))}
             </ul>
 
-            {/* CTA */}
             <div className="bg-navy p-8 relative overflow-hidden">
               <div className="absolute inset-0 tech-grid-dark opacity-40" />
               <div className="relative text-center">
@@ -322,10 +353,8 @@ export default function ProjetoDetail() {
         </div>
       </section>
 
-      {/* Photo Gallery */}
       <PhotoGallery gallery={projeto.gallery} />
 
-      {/* Other Projects */}
       <section className="py-16 bg-navy relative overflow-hidden">
         <div className="absolute inset-0 tech-grid-dark opacity-40" />
         <div className="container mx-auto px-4 relative">
@@ -357,9 +386,13 @@ export default function ProjetoDetail() {
             ))}
           </div>
           <div className="text-center mt-10">
-            <a href="/#projetos" className="inline-flex items-center gap-2 text-white/50 hover:text-brand transition-colors font-body text-sm">
+            <button
+              type="button"
+              onClick={() => goToSection("projetos")}
+              className="inline-flex items-center gap-2 text-white/50 hover:text-brand transition-colors font-body text-sm"
+            >
               <ArrowLeft size={14} /> Voltar para todos os projetos
-            </a>
+            </button>
           </div>
         </div>
       </section>
