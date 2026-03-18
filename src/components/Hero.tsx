@@ -30,11 +30,11 @@ export function Hero() {
           </div>
 
           <h1 className="font-display font-black text-white leading-none mb-6 animate-fade-in-up">
-            <span className="block text-6xl md:text-8xl tracking-tight">TECNOLOGIA EM</span>
-            <span className="block text-6xl md:text-8xl tracking-tight text-brand">INFRAESTRUTURA</span>
-            <span className="block text-6xl md:text-8xl tracking-tight">NÁUTICA E</span>
-            <span className="block text-6xl md:text-8xl tracking-tight">PORTUÁRIA</span>
-          </h1>
+  <span className="block text-4xl sm:text-5xl md:text-8xl tracking-tight">TECNOLOGIA EM</span>
+  <span className="block text-4xl sm:text-5xl md:text-8xl tracking-tight text-brand">INFRAESTRUTURA</span>
+  <span className="block text-4xl sm:text-5xl md:text-8xl tracking-tight">NÁUTICA E</span>
+  <span className="block text-4xl sm:text-5xl md:text-8xl tracking-tight">PORTUÁRIA</span>
+</h1>
 
           <div className="flex items-center gap-4 mb-8 animate-fade-in animate-delay-300">
             <div className="h-0.5 w-16 bg-brand" />

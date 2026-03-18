@@ -76,25 +76,7 @@ export function Header() {
           scrolled ? "hidden" : "block"
         }`}
       >
-        <div className="container mx-auto flex items-center justify-between py-2 px-4">
-          <div className="text-white/60 text-sm font-body">AJM Infraestrutura</div>
-          <div className="flex items-center gap-6">
-            <a
-              href="tel:+554733723255"
-              className="flex items-center gap-2 text-white/80 hover:text-brand transition-colors text-sm font-body"
-            >
-              <Phone size={14} />
-              + 55 47 3372-3255
-            </a>
-            <a
-              href="mailto:contato@ajminfra.com.br"
-              className="flex items-center gap-2 text-brand hover:text-brand-light transition-colors text-sm font-body"
-            >
-              <Mail size={14} />
-              contato@ajminfra.com.br
-            </a>
-          </div>
-        </div>
+        
       </div>
 
       <nav className="container mx-auto flex items-center justify-between px-4 py-4">
