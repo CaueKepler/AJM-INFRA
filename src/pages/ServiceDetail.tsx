@@ -24,11 +24,7 @@ const servicesData: Record<string, {
       "Conformidade técnica e normativa",
       "Equipe de engenheiros especializados",
     ],
-    gallery: [
-      { src: "/placeholder.svg", caption: "Perícia em estrutura portuária" },
-      { src: "/placeholder.svg", caption: "Análise de patologias" },
-      { src: "/placeholder.svg", caption: "Laudo técnico em campo" },
-    ],
+    gallery: [],
   },
   "supervisao-fiscalizacao": {
     title: "Supervisão e Fiscalização de Obras Costeiras e Portuárias",
@@ -42,11 +38,7 @@ const servicesData: Record<string, {
       "Relatórios técnicos periódicos",
       "Fiscalização de materiais e métodos",
     ],
-    gallery: [
-      { src: "/placeholder.svg", caption: "Supervisão de obra costeira" },
-      { src: "/placeholder.svg", caption: "Fiscalização de qualidade" },
-      { src: "/placeholder.svg", caption: "Controle de execução" },
-    ],
+    gallery: [],
   },
   "locacao-equipamentos": {
     title: "Locação de Equipamentos Pesados",
@@ -60,11 +52,7 @@ const servicesData: Record<string, {
       "Atendimento ágil e flexível",
       "Equipamentos para dragagem e infraestrutura",
     ],
-    gallery: [
-      { src: "/placeholder.svg", caption: "Equipamento pesado em operação" },
-      { src: "/placeholder.svg", caption: "Frota de máquinas" },
-      { src: "/placeholder.svg", caption: "Operação portuária" },
-    ],
+    gallery: [],
   },
   "inspecoes-portuarias-subaquaticas": {
     title: "Inspeções de Infraestruturas Portuárias e Subaquáticas",
@@ -78,11 +66,7 @@ const servicesData: Record<string, {
       "Inspeções subaquáticas especializadas",
       "Manutenção preventiva programada",
     ],
-    gallery: [
-      { src: "/placeholder.svg", caption: "Inspeção subaquática" },
-      { src: "/placeholder.svg", caption: "Avaliação de defensas" },
-      { src: "/placeholder.svg", caption: "Diagnóstico estrutural" },
-    ],
+    gallery: [],
   },
   "construcao-trapiches-pieres": {
     title: "Construção de Trapiches, Píeres, Rampas e Decks",
@@ -97,12 +81,33 @@ const servicesData: Record<string, {
       "Execução completa da obra",
     ],
     gallery: [
-      { src: "/placeholder.svg", caption: "Construção de trapiche" },
-      { src: "/placeholder.svg", caption: "Píer em execução" },
-      { src: "/placeholder.svg", caption: "Deck finalizado" },
+      { src: new URL("../assets/construcao-estaqueamento-1.jpeg", import.meta.url).href, caption: "Estaqueamento em obra portuária" },
+      { src: new URL("../assets/construcao-estaqueamento-2.jpeg", import.meta.url).href, caption: "Estacas cravadas" },
+      { src: new URL("../assets/construcao-estaqueamento-3.jpeg", import.meta.url).href, caption: "Execução de estaqueamento" },
+      { src: new URL("../assets/construcao-estaqueamento-4.jpeg", import.meta.url).href, caption: "Estaca cravada em ambiente aquático" },
+      { src: new URL("../assets/construcao-estaqueamento-5.jpeg", import.meta.url).href, caption: "Cravação de estacas" },
+      { src: new URL("../assets/construcao-estaqueamento-6.jpeg", import.meta.url).href, caption: "Infraestrutura de fundações" },
+      { src: new URL("../assets/construcao-estaqueamento-7.jpeg", import.meta.url).href, caption: "Estacas em obra costeira" },
+      { src: new URL("../assets/construcao-estaqueamento-8.jpeg", import.meta.url).href, caption: "Estaca escavada" },
+      { src: new URL("../assets/construcao-estaqueamento-10.jpeg", import.meta.url).href, caption: "Estaca raiz em execução" },
+      { src: new URL("../assets/construcao-estaqueamento-11.jpeg", import.meta.url).href, caption: "Estaca raiz concluída" },
+      { src: new URL("../assets/construcao-estaqueamento-12.jpeg", import.meta.url).href, caption: "Bate-estaca em balsa sobre o mar" },
+      { src: new URL("../assets/trapiche-coberto.jpeg", import.meta.url).href, caption: "Trapiche coberto com embarcações atracadas" },
+      { src: new URL("../assets/trapiche-rampa-1.jpg", import.meta.url).href, caption: "Trapiche com rampa de acesso" },
+      { src: new URL("../assets/trapiche-rampa-2.jpg", import.meta.url).href, caption: "Rampa de acesso e atracação em concreto" },
+      { src: new URL("../assets/trapiche-aereo-1.webp", import.meta.url).href, caption: "Vista aérea de trapiche" },
+      { src: new URL("../assets/trapiche-aereo-2.jpg", import.meta.url).href, caption: "Trapiche com passarela e deck flutuante" },
+      { src: new URL("../assets/trapiche-aereo-3.jpeg", import.meta.url).href, caption: "Trapiche em estrutura metálica — vista aérea" },
+      { src: new URL("../assets/trapiche-aereo-4.jpeg", import.meta.url).href, caption: "Vista lateral de trapiche metálico" },
+      { src: new URL("../assets/trapiche-aereo-5.jpeg", import.meta.url).href, caption: "Deck flutuante e passarela de acesso" },
+      { src: new URL("../assets/trapiche-aereo-6.jpeg", import.meta.url).href, caption: "Trapiche em concreto — vista aérea" },
+      { src: new URL("../assets/trapiche-aereo-7.jpeg", import.meta.url).href, caption: "Trapiche com estrutura sobre pilares" },
+      { src: new URL("../assets/trapiche-aereo-8.jpeg", import.meta.url).href, caption: "Trapiche metálico com embarcação atracada" },
+      { src: new URL("../assets/trapiche-aereo-9.jpeg", import.meta.url).href, caption: "Trapiche em operação — vista aérea" },
+      { src: new URL("../assets/trapiche-pontao-flutuante.jpeg", import.meta.url).href, caption: "Pontão flutuante em concreto" },
     ],
   },
-  "apoio-a-dragagem": {
+  "apoio-dragagem-infraestrutura": {
     title: "Apoio a Obras de Dragagem e Infraestrutura",
     tag: "Dragagem",
     description: "Suporte técnico e operacional em projetos de dragagem e estruturas marítimas.",
@@ -114,13 +119,9 @@ const servicesData: Record<string, {
       "Equipe qualificada e experiente",
       "Logística integrada de operações",
     ],
-    gallery: [
-      { src: "/placeholder.svg", caption: "Operação de dragagem" },
-      { src: "/placeholder.svg", caption: "Equipamento de apoio" },
-      { src: "/placeholder.svg", caption: "Infraestrutura marítima" },
-    ],
+    gallery: [],
   },
-  "sinalizacao-nautica": {
+  "manutencao-sinalizacao-nautica": {
     title: "Manutenção e Instalação de Sinalização Náutica",
     tag: "Sinalização",
     description: "Instalação, substituição e manutenção de balizamento fixo e flutuante.",
@@ -133,9 +134,12 @@ const servicesData: Record<string, {
       "Manutenção preventiva e corretiva",
     ],
     gallery: [
-      { src: "/placeholder.svg", caption: "Instalação de boia" },
-      { src: "/placeholder.svg", caption: "Sinalização náutica" },
-      { src: "/placeholder.svg", caption: "Manutenção de balizamento" },
+      { src: new URL("../assets/sinalizacao-balizador-verde-mangue.jpg", import.meta.url).href, caption: "Balizador verde em área de mangue" },
+      { src: new URL("../assets/sinalizacao-boia-vermelha.jpg", import.meta.url).href, caption: "Boia vermelha de sinalização náutica" },
+      { src: new URL("../assets/sinalizacao-farol-vermelho-1.jpg", import.meta.url).href, caption: "Farol vermelho sobre enrocamento" },
+      { src: new URL("../assets/sinalizacao-farol-verde-molhe.jpg", import.meta.url).href, caption: "Balizador verde no molhe" },
+      { src: new URL("../assets/sinalizacao-baliza-amarela.jpg", import.meta.url).href, caption: "Baliza amarela com painel solar" },
+      { src: new URL("../assets/sinalizacao-farol-tetrapodo.jpg", import.meta.url).href, caption: "Farol sobre tetrapodos — molhe" },
     ],
   },
   "manutencao-acessorios-atracacao": {
@@ -150,11 +154,7 @@ const servicesData: Record<string, {
       "Equipes de prontidão",
       "Planos de manutenção preventiva",
     ],
-    gallery: [
-      { src: "/placeholder.svg", caption: "Instalação de defensa" },
-      { src: "/placeholder.svg", caption: "Cabeço de amarração" },
-      { src: "/placeholder.svg", caption: "Sistema de atracação" },
-    ],
+    gallery: [],
   },
   "obras-saneamento": {
     title: "Obras de Saneamento",
@@ -169,9 +169,60 @@ const servicesData: Record<string, {
       "Execução completa de projetos",
     ],
     gallery: [
-      { src: "/placeholder.svg", caption: "Obra de saneamento" },
-      { src: "/placeholder.svg", caption: "Rede de drenagem" },
-      { src: "/placeholder.svg", caption: "Infraestrutura urbana" },
+      { src: new URL("../assets/saneamento-vala-1.jpg", import.meta.url).href, caption: "Abertura de vala para rede de saneamento" },
+    ],
+  },
+  "enrocamento": {
+    title: "Enrocamento e Proteção de Margens",
+    tag: "Enrocamento",
+    description: "Proteção de margens de rios e canais com enrocamento e técnicas de bioengenharia.",
+    fullDescription: "Proteção de margens de rios, canais e reservatórios com enrocamento de pedras e técnicas de contenção, prevenindo erosão e garantindo estabilidade estrutural das margens em obras portuárias e fluviais.",
+    highlights: [
+      "Proteção de margens contra erosão",
+      "Enrocamento com pedras naturais",
+      "Obras fluviais e costeiras",
+      "Equipe e equipamentos especializados",
+      "Atendimento a emergências",
+    ],
+    gallery: [
+      { src: new URL("../assets/enrocamento-margem.jpg", import.meta.url).href, caption: "Enrocamento de margem em rio" },
+    ],
+  },
+  "barragem": {
+    title: "Obras de Barragem e Infraestrutura Hídrica",
+    tag: "Barragem",
+    description: "Construção, recuperação e manutenção de barragens e estruturas hídricas.",
+    fullDescription: "Execução de obras de barragem, reservatórios e infraestrutura hídrica, incluindo estruturas de tomada d'água, vertedouros e edificações de apoio, com segurança e conformidade técnica.",
+    highlights: [
+      "Construção e recuperação de barragens",
+      "Estruturas de tomada d'água",
+      "Edificações e infraestrutura de apoio",
+      "Conformidade com normas de segurança",
+      "Equipe técnica especializada",
+    ],
+    gallery: [
+      { src: new URL("../assets/barragem-1.jpg", import.meta.url).href, caption: "Barragem — vista aérea" },
+      { src: new URL("../assets/barragem-edificio.jpg", import.meta.url).href, caption: "Edificação de apoio com energia solar" },
+      { src: new URL("../assets/barragem-estrutura.jpg", import.meta.url).href, caption: "Estrutura hídrica — vista aérea" },
+    ],
+  },
+  "contencao": {
+    title: "Contenção e Obras de Arte Especiais",
+    tag: "Contenção",
+    description: "Execução de estruturas de contenção, pontes e obras de arte especiais.",
+    fullDescription: "Execução de estruturas de contenção, pontes, bueiros e obras de arte especiais em concreto para travessias de rios, canais e áreas de drenagem, atendendo obras rurais, urbanas e industriais.",
+    highlights: [
+      "Pontes em concreto pré-moldado",
+      "Kit ponte e obras de arte especiais",
+      "Travessias de rios e canais",
+      "Obras rurais, urbanas e industriais",
+      "Execução rápida e segura",
+    ],
+    gallery: [
+      { src: new URL("../assets/contencao-ponte-1.jpg", import.meta.url).href, caption: "Ponte em concreto — kit ponte" },
+      { src: new URL("../assets/contencao-ponte-2.jpg", import.meta.url).href, caption: "Ponte — vista aérea" },
+      { src: new URL("../assets/contencao-ponte-3.jpg", import.meta.url).href, caption: "Ponte — vista geral" },
+      { src: new URL("../assets/contencao-ponte-encontro.jpg", import.meta.url).href, caption: "Encontros de ponte — execução" },
     ],
   },
   "terraplanagem": {
@@ -187,9 +238,8 @@ const servicesData: Record<string, {
       "Obras industriais e portuárias",
     ],
     gallery: [
-      { src: "/placeholder.svg", caption: "Terraplanagem em campo" },
-      { src: "/placeholder.svg", caption: "Movimentação de solo" },
-      { src: "/placeholder.svg", caption: "Preparação de terreno" },
+      { src: new URL("../assets/terraplanagem-loteamento-1.jpg", import.meta.url).href, caption: "Loteamento implantado" },
+      { src: new URL("../assets/terraplanagem-loteamento-2.jpg", import.meta.url).href, caption: "Loteamento em execução — terraplanagem e vias" },
     ],
   },
 };
@@ -419,7 +469,7 @@ export default function ServiceDetail() {
         </div>
       </section>
 
-      <PhotoGallery gallery={service.gallery} />
+      {service.gallery.length > 0 && <PhotoGallery gallery={service.gallery} />}
 
       <section className="py-16 bg-navy relative overflow-hidden">
         <div className="absolute inset-0 tech-grid-dark opacity-40" />

@@ -3,6 +3,34 @@ import { useEffect, useState } from "react";
 import { ArrowLeft, ArrowRight, CheckCircle, Camera, X, Shield, Anchor, Link2, Package, Wrench } from "lucide-react";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
+import cabecoSimplesImg from "@/assets/cabeco-tipo-simples.jpg";
+import cabecoCogumelo from "@/assets/cabeco-tipo-cogumelo.jpg";
+import cabecoDuploImg from "@/assets/cabeco-tipo-duplo.jpg";
+import cabecoCruzImg from "@/assets/cabeco-tipo-cruz.jpg";
+import cabecoCleatImg from "@/assets/cabeco-tipo-cleat.jpg";
+import cabecoInstalacaoImg from "@/assets/cabeco-instalacao-pier.jpeg";
+import cabecoNavioImg from "@/assets/cabeco-navio-atracado.jpeg";
+import defensaNavioImg from "@/assets/defensa-instalada-navio.jpeg";
+import defensaConicalPierImg from "@/assets/defensa-conica-pier.jpeg";
+import defensaInstalacaoImg from "@/assets/defensa-instalacao-operacao.jpeg";
+import defensaConicalPainelImg from "@/assets/defensa-conica-painel.jpeg";
+import defensaTipoDCais1Img from "@/assets/defensa-tipo-d-cais-1.jpeg";
+import defensaTipoDCais2Img from "@/assets/defensa-tipo-d-cais-2.jpeg";
+import defensaPneumaticaImg from "@/assets/defensa-pneumatica.jpg";
+import defensaSupercelular1Img from "@/assets/defensa-supercelular-1.jpg";
+import defensaSupercelular2Img from "@/assets/defensa-supercelular-2.jpg";
+import defensaTipoD1Img from "@/assets/defensa-tipo-d-1.jpg";
+import defensaTipoD2Img from "@/assets/defensa-tipo-d-2.jpg";
+import defensaCilindrica1Img from "@/assets/defensa-cilindrica-1.jpg";
+import defensaCilindrica2Img from "@/assets/defensa-cilindrica-2.jpg";
+import defensaArco1Img from "@/assets/defensa-arco-1.jpg";
+import defensaArco2Img from "@/assets/defensa-arco-2.jpg";
+import defensaModular1Img from "@/assets/defensa-modular-1.jpg";
+import defensaModularPiImg from "@/assets/defensa-modular-pi.jpg";
+import defensaPainelUhmw1Img from "@/assets/defensa-painel-uhmw-1.jpeg";
+import defensaPainelUhmw2Img from "@/assets/defensa-painel-uhmw-2.jpeg";
+import defensaPainelMontagemImg from "@/assets/defensa-painel-montagem.jpeg";
+import defensaPainelMetalico2Img from "@/assets/defensa-painel-metalico-2.jpeg";
 
 const productsData: Record<string, {
   title: string;
@@ -32,12 +60,27 @@ const productsData: Record<string, {
       "Instalação e manutenção especializadas",
     ],
     gallery: [
-      { src: "/placeholder.svg", caption: "Defensa Supercelular instalada" },
-      { src: "/placeholder.svg", caption: "Defensa Pneumática em operação" },
-      { src: "/placeholder.svg", caption: "Defensa Tipo D em píer" },
-      { src: "/placeholder.svg", caption: "Instalação de defensas" },
-      { src: "/placeholder.svg", caption: "Defensa Cilíndrica" },
-      { src: "/placeholder.svg", caption: "Sistema de defensas completo" },
+      { src: defensaNavioImg, caption: "Defensa supercelular instalada — proteção de navio" },
+      { src: defensaTipoDCais1Img, caption: "Defensas tipo D em cais portuário" },
+      { src: defensaTipoDCais2Img, caption: "Defensas tipo D — vista lateral no berço" },
+      { src: defensaConicalPierImg, caption: "Defensa cônica com painel em pier" },
+      { src: defensaConicalPainelImg, caption: "Defensa cônica com painel metálico" },
+      { src: defensaInstalacaoImg, caption: "Operação de instalação de defensa em píer" },
+      { src: defensaPneumaticaImg, caption: "Defensa pneumática tipo Yokohama" },
+      { src: defensaSupercelular1Img, caption: "Defensa supercelular — elemento de borracha" },
+      { src: defensaSupercelular2Img, caption: "Defensas supercelulares — estoque" },
+      { src: defensaTipoD1Img, caption: "Defensas tipo D — perfil grande" },
+      { src: defensaTipoD2Img, caption: "Defensas tipo D — perfil pequeno" },
+      { src: defensaCilindrica1Img, caption: "Defensas cilíndricas de grande porte" },
+      { src: defensaCilindrica2Img, caption: "Defensas cilíndricas — variação de diâmetro" },
+      { src: defensaArco1Img, caption: "Defensas tipo arco (W-Fender)" },
+      { src: defensaArco2Img, caption: "Defensa tipo arco — detalhe" },
+      { src: defensaModular1Img, caption: "Defensa modular — tipo M" },
+      { src: defensaModularPiImg, caption: "Defensa modular Pi" },
+      { src: defensaPainelUhmw1Img, caption: "Painéis UHMW para defensas" },
+      { src: defensaPainelUhmw2Img, caption: "Chapas de borracha para defensas" },
+      { src: defensaPainelMontagemImg, caption: "Painel de defensa em montagem" },
+      { src: defensaPainelMetalico2Img, caption: "Painel metálico de defensa — pintura em oficina" },
     ],
   },
   "cabecos-de-amarracao": {
@@ -56,9 +99,13 @@ const productsData: Record<string, {
       "Projetos conforme normas internacionais",
     ],
     gallery: [
-      { src: "/placeholder.svg", caption: "Cabeço de amarração instalado" },
-      { src: "/placeholder.svg", caption: "Fabricação de cabeço" },
-      { src: "/placeholder.svg", caption: "Cabeço de alta tonelagem" },
+      { src: cabecoInstalacaoImg, caption: "Instalação de cabeço de amarração em cais portuário" },
+      { src: cabecoNavioImg, caption: "Navio atracado com sistema de amarração" },
+      { src: cabecoSimplesImg, caption: "Cabeço de amarração tipo simples" },
+      { src: cabecoCogumelo, caption: "Cabeço de amarração tipo cogumelo" },
+      { src: cabecoDuploImg, caption: "Cabeço de amarração tipo duplo" },
+      { src: cabecoCruzImg, caption: "Cabeço de amarração tipo cruz (4 cornos)" },
+      { src: cabecoCleatImg, caption: "Cabeço de amarração tipo cleat" },
     ],
   },
   "ganchos-de-desengate-rapido": {
@@ -75,11 +122,7 @@ const productsData: Record<string, {
       "Manutenção simplificada",
       "Conformidade com normas de segurança",
     ],
-    gallery: [
-      { src: "/placeholder.svg", caption: "Gancho de desengate rápido" },
-      { src: "/placeholder.svg", caption: "Sistema instalado em terminal" },
-      { src: "/placeholder.svg", caption: "Detalhe do mecanismo" },
-    ],
+    gallery: [],
   },
   "pontoes-de-aco": {
     title: "Pontões de Aço",
@@ -95,11 +138,7 @@ const productsData: Record<string, {
       "Versatilidade de aplicações",
       "Dimensionamento sob projeto",
     ],
-    gallery: [
-      { src: "/placeholder.svg", caption: "Pontão de aço em operação" },
-      { src: "/placeholder.svg", caption: "Fabricação de pontão" },
-      { src: "/placeholder.svg", caption: "Pontão em apoio de dragagem" },
-    ],
+    gallery: [],
   },
   "acessorios-de-atracacao": {
     title: "Acessórios de Atracação",
@@ -115,11 +154,7 @@ const productsData: Record<string, {
       "Eficiência operacional",
       "Suporte técnico contínuo",
     ],
-    gallery: [
-      { src: "/placeholder.svg", caption: "Acessórios de atracação" },
-      { src: "/placeholder.svg", caption: "Sistema completo instalado" },
-      { src: "/placeholder.svg", caption: "Componentes de amarração" },
-    ],
+    gallery: [],
   },
 };
 
@@ -347,7 +382,7 @@ export default function ProductDetail() {
         </div>
       </section>
 
-      <PhotoGallery gallery={product.gallery} label="Produto" />
+      {product.gallery.length > 0 && <PhotoGallery gallery={product.gallery} label="Produto" />}
 
       <section className="py-16 bg-navy relative overflow-hidden">
         <div className="absolute inset-0 tech-grid-dark opacity-40" />
